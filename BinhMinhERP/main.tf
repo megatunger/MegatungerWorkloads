@@ -21,7 +21,7 @@ resource "cloudflare_record" "binhminh_erp_sendgrid_1" {
     value = "u13409028.wl029.sendgrid.net"
     zone_id = var.CLOUDFLARE_MEGATUNGER_COM_ZONE_ID
     type = "CNAME"
-    proxied = true
+    proxied = false
 }
 
 resource "cloudflare_record" "binhminh_erp_sendgrid_2" {
@@ -29,7 +29,7 @@ resource "cloudflare_record" "binhminh_erp_sendgrid_2" {
     value = "s1.domainkey.u13409028.wl029.sendgrid.net"
     zone_id = var.CLOUDFLARE_MEGATUNGER_COM_ZONE_ID
     type = "CNAME"
-    proxied = true
+    proxied = false
 }
 
 resource "cloudflare_record" "binhminh_erp_sendgrid_3" {
@@ -37,5 +37,5 @@ resource "cloudflare_record" "binhminh_erp_sendgrid_3" {
     value = "s2.domainkey.u13409028.wl029.sendgrid.net"
     zone_id = var.CLOUDFLARE_MEGATUNGER_COM_ZONE_ID
     type = "CNAME"
-    proxied = true
+    proxied = false
 }
