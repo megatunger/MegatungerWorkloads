@@ -43,14 +43,9 @@ resource "heroku_build" "lualep" {
     }
 }
 
-resource "heroku_domain" "lualep" {
-  app = heroku_app.lualep.id
-  hostname = "${replace(var.APP_NAME, "-", "")}.megatunger.com"
-}
-
 resource "cloudflare_record" "lualep" {
-    name = replace(var.APP_NAME, "-", "")
-    value = heroku_domain.lualep.cname
+    name = "lualepapi"
+    value = "${var.APP_NAME}.herokuapp.com"
     zone_id = var.CLOUDFLARE_MEGATUNGER_COM_ZONE_ID
     type = "CNAME"
     proxied = true

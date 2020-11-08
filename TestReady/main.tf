@@ -57,7 +57,7 @@ resource "heroku_domain" "www_testready" {
 
 resource "cloudflare_record" "testready" {
     name = "testready"
-    value = heroku_domain.testready.cname
+    value = "${var.APP_NAME}.herokuapp.com"
     zone_id = var.CLOUDFLARE_MEGATUNGER_COM_ZONE_ID
     type = "CNAME"
     proxied = true
@@ -65,7 +65,7 @@ resource "cloudflare_record" "testready" {
 
 resource "cloudflare_record" "www_testready" {
     name = "www.testready"
-    value = heroku_domain.www_testready.cname
+    value = "${var.APP_NAME}.herokuapp.com"
     zone_id = var.CLOUDFLARE_MEGATUNGER_COM_ZONE_ID
     type = "CNAME"
     proxied = true
