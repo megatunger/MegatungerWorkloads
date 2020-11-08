@@ -43,7 +43,7 @@ resource "heroku_build" "bmidcard_api" {
     }
 }
 
-resource "cloudflare_record" "lualep" {
+resource "cloudflare_record" "bmidcard_api" {
     name = "bmidcardapi"
     value = "${var.APP_NAME}.herokuapp.com"
     zone_id = var.CLOUDFLARE_MEGATUNGER_COM_ZONE_ID
