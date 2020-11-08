@@ -48,7 +48,7 @@ module "TestReady" {
   CLOUDFLARE_MEGATUNGER_COM_ZONE_ID = var.CLOUDFLARE_MEGATUNGER_COM_ZONE_ID
 }
 
-modules "BinhMinhIdCardAPI" {
+module "BinhMinhIdCardAPI" {
   source = "./BinhMinhIdCardAPI"
 
   HEROKU_ACCOUNT_EMAIL = var.HEROKU_ACCOUNT_EMAIL
