@@ -58,8 +58,8 @@ module "BinhMinhIdCardAPI" {
   CLOUDFLARE_MEGATUNGER_COM_ZONE_ID = var.CLOUDFLARE_MEGATUNGER_COM_ZONE_ID
 }
 
-module "megatunger.com" {
-  source = "./megatunger.com"
+module "GithubPages" {
+  source = "./GithubPages"
 
   CLOUDFLARE_ACCOUNT_EMAIL = var.CLOUDFLARE_ACCOUNT_EMAIL
   CLOUDFLARE_API_KEY = var.CLOUDFLARE_API_KEY
