@@ -6,6 +6,10 @@ on:
       - main
   pull_request:
 
+env:
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
 jobs:
   terraform:
     name: "Terraform"
@@ -55,6 +59,7 @@ jobs:
               repo: context.repo.repo,
               body: output
             })
+
       - name: Terraform Plan Status
         if: steps.plan.outcome == 'failure'
         run: exit 1
