@@ -7,7 +7,11 @@ terraform {
   }
 }
 
+module "variables" {
+  source = "../../"
+}
+
 provider "heroku" {
-    email = var.HEROKU_ACCOUNT_EMAIL
-    api_key = var.HEROKU_API_KEY
+  email = module.variables.HEROKU_ACCOUNT_EMAIL
+  api_key = module.variables.HEROKU_API_KEY
 }
