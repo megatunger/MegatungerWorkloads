@@ -37,7 +37,6 @@ resource "heroku_app" "bmidcard_api" {
 
 resource "heroku_build" "bmidcard_api" {
     app = heroku_app.bmidcard_api.id
-    buildpacks = ["https://github.com/heroku/heroku-buildpack-python.git"]
     source = {
         url = "https://github.com/megatunger/BinhMinh-IDCard-Service/archive/master.tar.gz"
     }
