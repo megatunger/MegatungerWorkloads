@@ -39,3 +39,19 @@ resource "cloudflare_record" "binhminh_erp_sendgrid_3" {
     type = "CNAME"
     proxied = false
 }
+
+resource "cloudflare_record" "binhminh_erp_sendgrid_4" {
+    name = "url2654.binhminh"
+    value = "sendgrid.net"
+    zone_id = var.CLOUDFLARE_MEGATUNGER_COM_ZONE_ID
+    type = "CNAME"
+    proxied = false
+}
+
+resource "cloudflare_record" "binhminh_erp_sendgrid_5" {
+    name = "13409028.binhminh"
+    value = "sendgrid.net"
+    zone_id = var.CLOUDFLARE_MEGATUNGER_COM_ZONE_ID
+    type = "CNAME"
+    proxied = false
+}
