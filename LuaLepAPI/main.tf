@@ -4,7 +4,7 @@ variable "CLOUDFLARE_ACCOUNT_EMAIL" {}
 variable "CLOUDFLARE_API_KEY" {}
 variable "CLOUDFLARE_MEGATUNGER_COM_ZONE_ID" {}
 variable "APP_NAME" {
-    default = "lualepapi"
+    default = "lua-lep-api"
 }
 
 terraform {
