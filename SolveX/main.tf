@@ -39,6 +39,12 @@ provider "cloudflare" {
 resource "heroku_app" "solvex" {
     name = var.APP_NAME
     region = "eu"
+    config_vars = {
+        AWS_ACCESS_KEY_ID = var.AWS_ACCESS_KEY_ID
+        AWS_REGION = var.AWS_REGION
+        AWS_SECRET_ACCESS_KEY = var.AWS_SECRET_ACCESS_KEY
+        AWS_BUCKET = var.AWS_BUCKET
+    }
 }
 
 resource "heroku_addon" "database" {
@@ -49,15 +55,6 @@ resource "heroku_addon" "database" {
 resource "heroku_addon" "redis" {
   app  = heroku_app.solvex.id
   plan = "heroku-redis:hobby-dev"
-}
-
-resource "heroku_config" "solvex" {
-    sensitive_vars = {
-        AWS_ACCESS_KEY_ID = var.AWS_ACCESS_KEY_ID,
-        AWS_REGION = var.AWS_REGION,
-        AWS_SECRET_ACCESS_KEY = var.AWS_SECRET_ACCESS_KEY,
-        AWS_BUCKET = var.AWS_BUCKET,
-    }
 }
 
 resource "cloudflare_record" "solvex" {
