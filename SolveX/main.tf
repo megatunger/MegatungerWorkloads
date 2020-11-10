@@ -4,7 +4,7 @@ variable "CLOUDFLARE_ACCOUNT_EMAIL" {}
 variable "CLOUDFLARE_API_KEY" {}
 variable "CLOUDFLARE_MEGATUNGER_COM_ZONE_ID" {}
 variable "APP_NAME" {
-    default = "testready-megatunger"
+    default = "solve-x"
 }
 
 terraform {
@@ -30,23 +30,23 @@ provider "cloudflare" {
     api_key = var.CLOUDFLARE_API_KEY
 }
 
-resource "heroku_app" "testready" {
+resource "heroku_app" "solvex" {
     name = var.APP_NAME
     region = "eu"
 }
 
 resource "heroku_addon" "database" {
-  app  = heroku_app.testready.id
+  app  = heroku_app.solvex.id
   plan = "heroku-postgresql:hobby-dev"
 }
 
 resource "heroku_addon" "redis" {
-  app  = heroku_app.testready.id
+  app  = heroku_app.solvex.id
   plan = "heroku-redis:hobby-dev"
 }
 
 resource "cloudflare_record" "testready" {
-    name = "testready"
+    name = "solvex"
     value = "${var.APP_NAME}.herokuapp.com"
     zone_id = var.CLOUDFLARE_MEGATUNGER_COM_ZONE_ID
     type = "CNAME"
