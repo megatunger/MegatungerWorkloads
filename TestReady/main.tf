@@ -45,16 +45,6 @@ resource "heroku_addon" "redis" {
   plan = "heroku-redis:hobby-dev"
 }
 
-resource "heroku_domain" "testready" {
-  app = heroku_app.testready.id
-  hostname = "testready.megatunger.com"
-}
-
-resource "heroku_domain" "www_testready" {
-  app = heroku_app.testready.id
-  hostname = "www.testready.megatunger.com"
-}
-
 resource "cloudflare_record" "testready" {
     name = "testready"
     value = "${var.APP_NAME}.herokuapp.com"
