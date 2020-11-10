@@ -2,7 +2,13 @@ variable "HEROKU_ACCOUNT_EMAIL" {}
 variable "HEROKU_API_KEY" {}
 variable "CLOUDFLARE_ACCOUNT_EMAIL" {}
 variable "CLOUDFLARE_API_KEY" {}
-variable "CLOUDFLARE_MEGATUNGER_COM_ZONE_ID" {}
+variable "CLOUDFLARE_SOLVEX_EDU_VN_ZONE_ID" {}
+variable "AWS_ACCESS_KEY_ID" {}
+variable "AWS_BUCKET" {}
+variable "AWS_REGION" {}
+variable "AWS_SECRET_ACCESS_KEY" {}
+variable "GITHUB_API_TOKEN" {}
+
 variable "APP_NAME" {
     default = "solve-x"
 }
@@ -45,26 +51,35 @@ resource "heroku_addon" "redis" {
   plan = "heroku-redis:hobby-dev"
 }
 
-resource "cloudflare_record" "testready" {
+resource "heroku_config" "solvex" {
+    sensitive_vars = {
+        AWS_ACCESS_KEY_ID = var.AWS_ACCESS_KEY_ID,
+        AWS_REGION = var.AWS_REGION,
+        AWS_SECRET_ACCESS_KEY = var.AWS_SECRET_ACCESS_KEY,
+        AWS_BUCKET = var.AWS_BUCKET,
+    }
+}
+
+resource "cloudflare_record" "solvex" {
     name = "solvex"
     value = "${var.APP_NAME}.herokuapp.com"
-    zone_id = var.CLOUDFLARE_MEGATUNGER_COM_ZONE_ID
+    zone_id = var.CLOUDFLARE_SOLVEX_EDU_VN_ZONE_ID
     type = "CNAME"
     proxied = true
 }
 
-resource "cloudflare_record" "www_testready" {
-    name = "www.testready"
+resource "cloudflare_record" "www_solvex" {
+    name = "www.solvex"
     value = "${var.APP_NAME}.herokuapp.com"
-    zone_id = var.CLOUDFLARE_MEGATUNGER_COM_ZONE_ID
+    zone_id = var.CLOUDFLARE_SOLVEX_EDU_VN_ZONE_ID
     type = "CNAME"
     proxied = true
 }
 
-resource "heroku_build" "testready" {
-    app = heroku_app.testready.id
-    buildpacks = ["https://github.com/heroku/heroku-buildpack-ruby.git"]
+resource "heroku_build" "solvex" {
+    app = heroku_app.solvex.id
+    buildpacks = ["https://github.com/heroku/heroku-buildpack-ruby.git", "https://github.com/heroku/heroku-buildpack-activestorage-preview"]
     source = {
-        url = "https://github.com/megatunger/testready/archive/master.tar.gz"
+        url = "https://api.github.com/repos/megatunger/OdingsProject/tarball?access_token=${var.GITHUB_API_TOKEN}"
     }
 }
