@@ -76,6 +76,30 @@ resource "cloudflare_record" "www_solvex" {
     proxied = true
 }
 
+resource "cloudflare_record" "sendgrid_1" {
+    name = "s1._domainkey"
+    value = "s1.domainkey.u15222697.wl198.sendgrid.net"
+    zone_id = var.CLOUDFLARE_SOLVEX_EDU_VN_ZONE_ID
+    type = "CNAME"
+    proxied = false
+}
+
+resource "cloudflare_record" "sendgrid_2" {
+    name = "s2._domainkey"
+    value = "s2.domainkey.u15222697.wl198.sendgrid.net"
+    zone_id = var.CLOUDFLARE_SOLVEX_EDU_VN_ZONE_ID
+    type = "CNAME"
+    proxied = false
+}
+
+resource "cloudflare_record" "sendgrid_3" {
+    name = "em773"
+    value = "u15222697.wl198.sendgrid.net"
+    zone_id = var.CLOUDFLARE_SOLVEX_EDU_VN_ZONE_ID
+    type = "CNAME"
+    proxied = false
+}
+
 resource "heroku_build" "solvex" {
     app = heroku_app.solvex.id
     buildpacks = ["https://github.com/heroku/heroku-buildpack-ruby.git", "https://github.com/heroku/heroku-buildpack-activestorage-preview"]
