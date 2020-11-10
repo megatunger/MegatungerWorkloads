@@ -58,7 +58,7 @@ resource "heroku_addon" "redis" {
 }
 
 resource "cloudflare_record" "solvex" {
-    name = "solvex"
+    name = "@"
     value = "${var.APP_NAME}.herokuapp.com"
     zone_id = var.CLOUDFLARE_SOLVEX_EDU_VN_ZONE_ID
     type = "CNAME"
@@ -66,7 +66,7 @@ resource "cloudflare_record" "solvex" {
 }
 
 resource "cloudflare_record" "www_solvex" {
-    name = "www.solvex"
+    name = "www"
     value = "${var.APP_NAME}.herokuapp.com"
     zone_id = var.CLOUDFLARE_SOLVEX_EDU_VN_ZONE_ID
     type = "CNAME"
