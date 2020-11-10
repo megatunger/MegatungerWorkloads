@@ -57,6 +57,16 @@ resource "heroku_addon" "redis" {
   plan = "heroku-redis:hobby-dev"
 }
 
+resource "heroku_domain" "solvex" {
+  app = heroku_app.solvex.id
+  hostname = "solvex.edu.vn"
+}
+
+resource "heroku_domain" "www_solvex" {
+  app = heroku_app.solvex.id
+  hostname = "www.solvex.edu.vn"
+}
+
 resource "cloudflare_record" "solvex" {
     name = "@"
     value = "${var.APP_NAME}.herokuapp.com"
