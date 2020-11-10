@@ -62,8 +62,8 @@ resource "cloudflare_record" "www_megatunger" {
     proxied = true
 }
 
-resource "heroku_build" "testready" {
-    app = heroku_app.testready.id
+resource "heroku_build" "megatunger_blog" {
+    app = heroku_app.megatunger_blog.id
     source = {
         url = "https://github.com/megatunger/PersonalBlog/archive/master.tar.gz"
     }
