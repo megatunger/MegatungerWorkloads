@@ -35,6 +35,11 @@ resource "heroku_app" "lualep" {
     region = "eu"
 }
 
+resource "heroku_domain" "lualep" {
+  app = heroku_app.lualep.id
+  hostname = "lualepapi.megatunger.com"
+}
+
 resource "heroku_build" "lualep" {
     app = heroku_app.lualep.id
     buildpacks = ["https://github.com/heroku/heroku-buildpack-python.git", "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"]

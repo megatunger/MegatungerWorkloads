@@ -35,6 +35,11 @@ resource "heroku_app" "bmidcard_api" {
     region = "eu"
 }
 
+resource "heroku_domain" "bmidcard_api" {
+  app = heroku_app.bmidcard_api.id
+  hostname = "bmidcardapi.megatunger.com"
+}
+
 resource "heroku_build" "bmidcard_api" {
     app = heroku_app.bmidcard_api.id
     buildpacks = ["https://github.com/heroku/heroku-buildpack-python.git"]
