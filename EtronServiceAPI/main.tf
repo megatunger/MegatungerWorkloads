@@ -3,6 +3,7 @@ variable "HEROKU_API_KEY" {}
 variable "CLOUDFLARE_ACCOUNT_EMAIL" {}
 variable "CLOUDFLARE_API_KEY" {}
 variable "CLOUDFLARE_MEGATUNGER_COM_ZONE_ID" {}
+variable "GITHUB_API_TOKEN" {}
 variable "APP_NAME" {
     default = "etron-service-api"
 }
@@ -44,7 +45,7 @@ resource "heroku_build" "etron_api" {
     app = heroku_app.etron_api.id
     buildpacks = ["https://github.com/heroku/heroku-buildpack-python.git", "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"]
     source = {
-        url = "https://github.com/megatunger/EtronTeam-Service/archive/master.tar.gz"
+        url = "https://api.github.com/repos/megatunger/EtronTeam-Service/tarball?access_token=${var.GITHUB_API_TOKEN}"
     }
 }
 
