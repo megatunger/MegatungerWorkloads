@@ -17,6 +17,7 @@ variable "CLOUDFLARE_ACCOUNT_EMAIL" {
 variable "CLOUDFLARE_API_KEY" {}
 variable "CLOUDFLARE_MEGATUNGER_COM_ZONE_ID" {}
 variable "CLOUDFLARE_SOLVEX_EDU_VN_ZONE_ID" {}
+variable "CLOUDFLARE_EDUMET_EDU_VN_ZONE_ID" {}
 
 #####################################
 
