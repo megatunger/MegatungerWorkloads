@@ -38,7 +38,7 @@ resource "heroku_app" "edumet" {
 }
 
 resource "heroku_domain" "edumet" {
-  app = heroku_app.ai_academy.id
+  app = heroku_app.edumet.id
   hostname = "edumet.edu.vn"
 }
 
