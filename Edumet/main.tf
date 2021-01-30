@@ -45,7 +45,7 @@ resource "heroku_domain" "edumet" {
 resource "heroku_build" "edumet" {
     app = heroku_app.edumet.id
     source = {
-        url = "https://github.com/megatunger/EdumetLandingPage/archive/master.tar.gz"
+        url = "https://github.com/megatunger/EdumetLandingPage/archive/main.tar.gz"
     }
 }
 
