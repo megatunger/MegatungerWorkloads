@@ -49,7 +49,7 @@ resource "heroku_build" "edumet" {
     }
 }
 
-resource "cloudflare_record" "edumet" {
+resource "cloudflare_record" "edumet_www" {
     name = "www"
     value = "${var.APP_NAME}.herokuapp.com"
     zone_id = var.CLOUDFLARE_EDUMET_EDU_VN_ZONE_ID
