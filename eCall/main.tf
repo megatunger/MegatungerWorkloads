@@ -37,6 +37,11 @@ resource "heroku_app" "ecall" {
     region = "eu"
 }
 
+resource "heroku_addon" "database" {
+  app  = heroku_app.ecall.id
+  plan = "heroku-postgresql:hobby-dev"
+}
+
 resource "heroku_domain" "ecall" {
   app = heroku_app.ecall.id
   hostname = "ecall.etronresearch.work"
