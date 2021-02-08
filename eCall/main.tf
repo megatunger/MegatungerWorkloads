@@ -5,7 +5,7 @@ variable "CLOUDFLARE_ETRONRESEARCH_WORK_ZONE_ID" {}
 variable "CLOUDFLARE_API_KEY" {}
 
 variable "APP_NAME" {
-    default = "ecall"
+    default = "ecall-etron"
 }
 
 terraform {
