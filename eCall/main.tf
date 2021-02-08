@@ -49,7 +49,7 @@ resource "heroku_build" "ecall" {
     }
 }
 
-resource "cloudflare_record" "edumet" {
+resource "cloudflare_record" "ecall" {
     name = "ecall"
     value = "${var.APP_NAME}.herokuapp.com"
     zone_id = var.CLOUDFLARE_ETRONRESEARCH_WORK_ZONE_ID
