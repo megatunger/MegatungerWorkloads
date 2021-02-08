@@ -49,14 +49,6 @@ resource "heroku_build" "ecall" {
     }
 }
 
-resource "cloudflare_record" "ecall_www" {
-    name = "www.ecall"
-    value = "${var.APP_NAME}.herokuapp.com"
-    zone_id = var.CLOUDFLARE_ETRONRESEARCH_WORK_ZONE_ID
-    type = "CNAME"
-    proxied = true
-}
-
 resource "cloudflare_record" "edumet" {
     name = "ecall"
     value = "${var.APP_NAME}.herokuapp.com"
