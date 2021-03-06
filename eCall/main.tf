@@ -47,6 +47,11 @@ resource "heroku_domain" "ecall" {
   hostname = "ecall.etronresearch.work"
 }
 
+resource "heroku_domain" "ucall" {
+  app = heroku_app.ecall.id
+  hostname = "ucall.etronresearch.work"
+}
+
 resource "heroku_build" "ecall" {
     app = heroku_app.ecall.id
     source = {
@@ -56,6 +61,14 @@ resource "heroku_build" "ecall" {
 
 resource "cloudflare_record" "ecall" {
     name = "ecall"
+    value = "${var.APP_NAME}.herokuapp.com"
+    zone_id = var.CLOUDFLARE_ETRONRESEARCH_WORK_ZONE_ID
+    type = "CNAME"
+    proxied = true
+}
+
+resource "cloudflare_record" "ucall" {
+    name = "ucall"
     value = "${var.APP_NAME}.herokuapp.com"
     zone_id = var.CLOUDFLARE_ETRONRESEARCH_WORK_ZONE_ID
     type = "CNAME"
