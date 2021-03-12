@@ -5,8 +5,8 @@ variable "CLOUDFLARE_ETRONRESEARCH_WORK_ZONE_ID" {}
 variable "CLOUDFLARE_API_KEY" {}
 variable "GITHUB_API_TOKEN" {}
 
-variable "APP_NAME_LANDING_PAGE" {
-    default = "ucall-landingpage"
+variable "APP_NAME_WEB" {
+    default = "ucall-web"
 }
 
 variable "APP_NAME_APP" {
@@ -37,8 +37,8 @@ provider "cloudflare" {
     api_key = var.CLOUDFLARE_API_KEY
 }
 
-resource "heroku_app" "ucall_landingpage" {
-    name = var.APP_NAME_LANDING_PAGE
+resource "heroku_app" "ucall_web" {
+    name = var.APP_NAME_WEB
     region = "eu"
 }
 
@@ -47,8 +47,8 @@ resource "heroku_app" "ucall_app" {
     region = "eu"
 }
 
-resource "heroku_domain" "ucall_landingpage" {
-  app = heroku_app.ucall_landingpage.id
+resource "heroku_domain" "ucall_web" {
+  app = heroku_app.ucall_web.id
   hostname = "ucall.etronresearch.work"
 }
 
@@ -60,21 +60,21 @@ resource "heroku_domain" "ucall_app" {
 resource "heroku_build" "ucall_app" {
     app = heroku_app.ucall_app.id
     source = {
-        url = "https://api.github.com/repos/megatunger/eCall/tarball?access_token=${var.GITHUB_API_TOKEN}"
+        url = "https://api.github.com/repos/megatunger/uCall-App/tarball?access_token=${var.GITHUB_API_TOKEN}"
     }
 }
 
-resource "heroku_build" "ucall_landingpage" {
-    app = heroku_app.ucall_landingpage.id
+resource "heroku_build" "ucall_web" {
+    app = heroku_app.ucall_web.id
     buildpacks = ["https://github.com/heroku/heroku-buildpack-ruby.git"]
     source = {
-        url = "https://github.com/megatunger/eCall-LandingPage/archive/main.tar.gz"
+        url = "https://github.com/megatunger/uCall-Web/archive/main.tar.gz"
     }
 }
 
-resource "cloudflare_record" "ucall_landingpage" {
+resource "cloudflare_record" "ucall_web" {
     name = "ucall"
-    value = "${var.APP_NAME_LANDING_PAGE}.herokuapp.com"
+    value = "${var.APP_NAME_WEB}.herokuapp.com"
     zone_id = var.CLOUDFLARE_ETRONRESEARCH_WORK_ZONE_ID
     type = "CNAME"
     proxied = true
