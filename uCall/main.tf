@@ -47,7 +47,7 @@ resource "heroku_app" "ucall_app" {
     region = "eu"
 }
 
-resource "heroku_domain" "ucall" {
+resource "heroku_domain" "ucall_landingpage" {
   app = heroku_app.ucall_landingpage.id
   hostname = "ucall.etronresearch.work"
 }
@@ -66,6 +66,7 @@ resource "heroku_build" "ucall_app" {
 
 resource "heroku_build" "ucall_landingpage" {
     app = heroku_app.ucall_landingpage.id
+    buildpacks = ["https://github.com/heroku/heroku-buildpack-ruby.git"]
     source = {
         url = "https://github.com/megatunger/eCall-LandingPage/archive/main.tar.gz"
     }
