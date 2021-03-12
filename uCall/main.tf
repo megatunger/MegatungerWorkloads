@@ -6,7 +6,7 @@ variable "CLOUDFLARE_API_KEY" {}
 variable "GITHUB_API_TOKEN" {}
 
 variable "APP_NAME_LANDING_PAGE" {
-    default = "ucall"
+    default = "ucall-landingpage"
 }
 
 variable "APP_NAME_APP" {
