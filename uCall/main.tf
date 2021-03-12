@@ -68,7 +68,7 @@ resource "heroku_build" "ucall_web" {
     app = heroku_app.ucall_web.id
     buildpacks = ["https://github.com/heroku/heroku-buildpack-ruby.git"]
     source = {
-        url = "https://github.com/megatunger/uCall-Web/archive/main.tar.gz"
+        url = "https://github.com/megatunger/uCall-Web/archive/master.tar.gz"
     }
 }
 
