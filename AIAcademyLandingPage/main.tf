@@ -22,7 +22,7 @@ terraform {
 
 provider "heroku" {
   email = var.HEROKU_ACCOUNT_EMAIL
-  api_key = var.HEROKU_ACCOUNT_MEGATUNGER_API_KEY
+  api_key = var.HEROKU_API_KEY
 }
 
 provider "cloudflare" {
