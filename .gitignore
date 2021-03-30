@@ -27,3 +27,4 @@ Temporary Items
 .terraform
 *.tfstate
 *.tfstate.backup
+pulled-tfstate.json
