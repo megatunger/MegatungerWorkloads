@@ -1,5 +1,5 @@
 variable "HEROKU_ACCOUNT_EMAIL" {}
-variable "HEROKU_ACCOUNT_MEGATUNGER_API_KEY" {}
+variable "HEROKU_API_KEY" {}
 variable "CLOUDFLARE_ACCOUNT_EMAIL" {}
 variable "CLOUDFLARE_API_KEY" {}
 variable "CLOUDFLARE_SOLVEX_EDU_VN_ZONE_ID" {}
@@ -28,7 +28,7 @@ terraform {
 
 provider "heroku" {
   email = var.HEROKU_ACCOUNT_EMAIL
-  api_key = var.HEROKU_ACCOUNT_MEGATUNGER_API_KEY
+  api_key = var.HEROKU_API_KEY
 }
 
 provider "cloudflare" {
