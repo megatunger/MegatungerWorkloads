@@ -51,7 +51,7 @@ resource "heroku_domain" "www_ucall_landing_page" {
 }
 
 resource "cloudflare_record" "ucall_landing_page" {
-    name = "ucall"
+    name = "@"
     value = "${var.APP_NAME}.herokuapp.com"
     zone_id = var.CLOUDFLARE_ZONE_ID
     type = "CNAME"
@@ -59,7 +59,7 @@ resource "cloudflare_record" "ucall_landing_page" {
 }
 
 resource "cloudflare_record" "www_ucall_landing_page" {
-    name = "www.ucall"
+    name = "www"
     value = "${var.APP_NAME}.herokuapp.com"
     zone_id = var.CLOUDFLARE_ZONE_ID
     type = "CNAME"
