@@ -150,8 +150,8 @@ module "uCallSystemStag" {
   GITHUB_API_TOKEN = var.GITHUB_API_TOKEN
 }
 
-module "uCallSystem" {
-  source = "./uCallSystem"
+module "uCallSystemProd" {
+  source = "./uCallSystemProd"
 
   HEROKU_ACCOUNT_EMAIL = var.HEROKU_ACCOUNT_ETRON_TEAM_EMAIL
   HEROKU_ACCOUNT_ETRON_TEAM_API_KEY = var.HEROKU_ACCOUNT_ETRON_TEAM_API_KEY
