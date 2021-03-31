@@ -1,10 +1,11 @@
 variable "HEROKU_ACCOUNT_EMAIL" {}
-variable "HEROKU_ACCOUNT_ETRON_TEAM_API_KEY" {}
+variable "HEROKU_API_KEY" {}
 variable "CLOUDFLARE_ACCOUNT_EMAIL" {}
 variable "CLOUDFLARE_API_KEY" {}
-variable "CLOUDFLARE_MEGATUNGER_COM_ZONE_ID" {}
+variable "CLOUDFLARE_ZONE_ID" {}
+variable "GITHUB_API_TOKEN" {}
 variable "APP_NAME" {
-    default = "lua-lep-api"
+    default = "ucall-system-prod"
 }
 
 terraform {
@@ -30,28 +31,28 @@ provider "cloudflare" {
     api_key = var.CLOUDFLARE_API_KEY
 }
 
-resource "heroku_app" "lualep" {
+resource "heroku_app" "ucall_system_prod" {
     name = var.APP_NAME
     region = "eu"
 }
 
-resource "heroku_domain" "lualep" {
-  app = heroku_app.lualep.id
-  hostname = "lualepapi.megatunger.com"
+resource "heroku_domain" "ucall_system_prod" {
+  app = heroku_app.ucall_system_prod.id
+  hostname = "api.ucall.cc"
 }
 
-resource "heroku_build" "lualep" {
-    app = heroku_app.lualep.id
-    buildpacks = ["https://github.com/heroku/heroku-buildpack-python.git", "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"]
+resource "heroku_build" "ucall_system_prod" {
+    app = heroku_app.ucall_system_prod.id
+    buildpacks = ["https://github.com/heroku/heroku-buildpack-python.git"]
     source = {
-        url = "https://github.com/megatunger/Lua-Lep-Backend/archive/master.tar.gz"
+        url = "https://api.github.com/repos/megatunger/ucall_manager/tarball?access_token=${var.GITHUB_API_TOKEN}"
     }
 }
 
-resource "cloudflare_record" "lualep" {
-    name = "lualepapi"
+resource "cloudflare_record" "ucall_system_prod" {
+    name = "api"
     value = "${var.APP_NAME}.herokuapp.com"
-    zone_id = var.CLOUDFLARE_MEGATUNGER_COM_ZONE_ID
+    zone_id = var.CLOUDFLARE_ZONE_ID
     type = "CNAME"
     proxied = true
 }
