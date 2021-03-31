@@ -3,6 +3,7 @@ variable "HEROKU_API_KEY" {}
 variable "CLOUDFLARE_ACCOUNT_EMAIL" {}
 variable "CLOUDFLARE_API_KEY" {}
 variable "CLOUDFLARE_ZONE_ID" {}
+variable "GITHUB_API_TOKEN" {}
 variable "APP_NAME" {
     default = "ucall-system-stag"
 }
