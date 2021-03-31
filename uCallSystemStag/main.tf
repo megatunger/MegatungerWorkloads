@@ -50,7 +50,7 @@ resource "heroku_build" "ucall_system_stag" {
 }
 
 resource "cloudflare_record" "ucall_system_stag" {
-    name = "api"
+    name = "api.stag"
     value = "${var.APP_NAME}.herokuapp.com"
     zone_id = var.CLOUDFLARE_ZONE_ID
     type = "CNAME"
