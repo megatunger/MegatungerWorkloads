@@ -53,7 +53,7 @@ resource "heroku_build" "ucall_app" {
 resource "cloudflare_record" "ucall_app" {
     name = "app"
     value = "${var.APP_NAME_APP}.herokuapp.com"
-    zone_id = var.CLOUDFLARE_ETRONRESEARCH_WORK_ZONE_ID
+    zone_id = var.CLOUDFLARE_ZONE_ID
     type = "CNAME"
     proxied = true
 }
