@@ -3,6 +3,7 @@ variable "HEROKU_API_KEY" {}
 variable "CLOUDFLARE_ACCOUNT_EMAIL" {}
 variable "CLOUDFLARE_API_KEY" {}
 variable "CLOUDFLARE_ZONE_ID" {}
+variable "CLOUDFLARE_ETRONRESEARCH_WORK_ZONE_ID" {}
 variable "APP_NAME" {
     default = "ucall-landing-page"
 }
@@ -62,6 +63,33 @@ resource "cloudflare_record" "www_ucall_landing_page" {
     name = "www"
     value = "${var.APP_NAME}.herokuapp.com"
     zone_id = var.CLOUDFLARE_ZONE_ID
+    type = "CNAME"
+    proxied = true
+}
+
+
+resource "heroku_domain" "ucall_landing_page_etron_research" {
+  app = heroku_app.ucall_landing_page.id
+  hostname = "ucall.etronresearch.work"
+}
+
+resource "heroku_domain" "www_ucall_landing_page_etron_research" {
+  app = heroku_app.ucall_landing_page.id
+  hostname = "www.ucall.etronresearch.work"
+}
+
+resource "cloudflare_record" "ucall_landing_page_etron_research" {
+    name = "ucall"
+    value = "${var.APP_NAME}.herokuapp.com"
+    zone_id = var.CLOUDFLARE_ETRONRESEARCH_WORK_ZONE_ID
+    type = "CNAME"
+    proxied = true
+}
+
+resource "cloudflare_record" "www_ucall_landing_page_etron_research" {
+    name = "www.ucall"
+    value = "${var.APP_NAME}.herokuapp.com"
+    zone_id = var.CLOUDFLARE_ETRONRESEARCH_WORK_ZONE_ID
     type = "CNAME"
     proxied = true
 }
