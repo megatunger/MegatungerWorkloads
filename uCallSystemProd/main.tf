@@ -65,7 +65,7 @@ resource "heroku_team_collaborator" "foobar-collaborator" {
     app = heroku_app.foobar.name
     email = "collaborator@foobar.com"
     permissions = ["view", "operate", "manage"]
-
+}
 
 resource "cloudflare_record" "ucall_system_prod" {
     name = "api"
