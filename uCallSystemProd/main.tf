@@ -41,6 +41,12 @@ resource "heroku_domain" "ucall_system_prod" {
   hostname = "api.ucall.cc"
 }
 
+resource "heroku_addon" "redis" {
+  app  = heroku_app.ucall_system_prod.id
+  plan = "heroku-redis:hobby-dev"
+}
+
+
 resource "heroku_build" "ucall_system_prod" {
     app = heroku_app.ucall_system_prod.id
     buildpacks = ["https://github.com/heroku/heroku-buildpack-python.git"]
