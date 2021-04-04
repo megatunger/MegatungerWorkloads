@@ -56,7 +56,7 @@ resource "heroku_build" "ucall_system_prod" {
 }
 
 resource "heroku_team_collaborator" "ucall_system_prod" {
-    app = heroku_app.ucall_system_prod.name
+    app = heroku_app.ucall_system_prod.id
     email = "hoangsontung080899@gmail.com"
     permissions = ["view", "operate", "manage"]
 }
