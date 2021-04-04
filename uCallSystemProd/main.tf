@@ -55,12 +55,6 @@ resource "heroku_build" "ucall_system_prod" {
     }
 }
 
-resource "heroku_team_collaborator" "ucall_system_prod_collaborator" {
-    app = heroku_app.ucall_system_prod.id
-    email = "hoangsontung080899@gmail.com"
-    permissions = ["view", "operate", "manage"]
-}
-
 resource "cloudflare_record" "ucall_system_prod" {
     name = "api"
     value = "${var.APP_NAME}.herokuapp.com"
