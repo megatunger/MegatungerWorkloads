@@ -1,6 +1,6 @@
 variable "CLOUDFLARE_ACCOUNT_EMAIL" {}
 variable "CLOUDFLARE_API_KEY" {}
-variable "CLOUDFLARE_MEGATUNGER_COM_ZONE_ID" {}
+variable "CLOUDFLARE_ZONE_ID" {}
 
 terraform {
   required_providers {
@@ -19,7 +19,7 @@ provider "cloudflare" {
 resource "cloudflare_record" "ucall_sendgrid_1" {
   name    = "url3266.ucall.asia"
   value   = "sendgrid.net"
-  zone_id = var.CLOUDFLARE_MEGATUNGER_COM_ZONE_ID
+  zone_id = var.CLOUDFLARE_ZONE_ID
   type    = "CNAME"
   proxied = false
 }
@@ -27,7 +27,7 @@ resource "cloudflare_record" "ucall_sendgrid_1" {
 resource "cloudflare_record" "ucall_sendgrid_2" {
   name    = "13409028.ucall.asia"
   value   = "sendgrid.net"
-  zone_id = var.CLOUDFLARE_MEGATUNGER_COM_ZONE_ID
+  zone_id = var.CLOUDFLARE_ZONE_ID
   type    = "CNAME"
   proxied = false
 }
@@ -35,7 +35,7 @@ resource "cloudflare_record" "ucall_sendgrid_2" {
 resource "cloudflare_record" "ucall_sendgrid_3" {
   name    = "em14.ucall.asia"
   value   = "u13409028.wl029.sendgrid.net"
-  zone_id = var.CLOUDFLARE_MEGATUNGER_COM_ZONE_ID
+  zone_id = var.CLOUDFLARE_ZONE_ID
   type    = "CNAME"
   proxied = false
 }
@@ -43,7 +43,7 @@ resource "cloudflare_record" "ucall_sendgrid_3" {
 resource "cloudflare_record" "ucall_sendgrid_4" {
   name    = "s1._domainkey.ucall.asia"
   value   = "s1.domainkey.u13409028.wl029.sendgrid.net"
-  zone_id = var.CLOUDFLARE_MEGATUNGER_COM_ZONE_ID
+  zone_id = var.CLOUDFLARE_ZONE_ID
   type    = "CNAME"
   proxied = false
 }
@@ -51,7 +51,7 @@ resource "cloudflare_record" "ucall_sendgrid_4" {
 resource "cloudflare_record" "ucall_sendgrid_5" {
   name    = "s2._domainkey.ucall.asia"
   value   = "s2.domainkey.u13409028.wl029.sendgrid.net"
-  zone_id = var.CLOUDFLARE_MEGATUNGER_COM_ZONE_ID
+  zone_id = var.CLOUDFLARE_ZONE_ID
   type    = "CNAME"
   proxied = false
 }
