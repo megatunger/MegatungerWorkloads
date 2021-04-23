@@ -55,3 +55,43 @@ resource "cloudflare_record" "ucall_sendgrid_5" {
   type    = "CNAME"
   proxied = false
 }
+
+resource "cloudflare_record" "ucall_mailgun_1" {
+  name    = "@"
+  value   = "v=spf1 include:mailgun.org ~all"
+  zone_id = var.CLOUDFLARE_ZONE_ID
+  type    = "TXT"
+  proxied = false
+}
+
+resource "cloudflare_record" "ucall_mailgun_2" {
+  name    = "krs._domainkey.ucall.asia"
+  value   = "k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC4+6Fj+8RD3syKQyedy9+TkioW+9y7HgvHV7wBzy9bwT0P9hcq2yWoNq8vuH6DkcpsoAiRiXE88HHJh8ScSFuJT2QxQ1WbQQbcpJyW5lhpEWJenB3n07qDjHKjmj2flMVCwOZpMNlFNC0KfI080cU7yzffe93ADFVsy7inK52JbwIDAQAB"
+  zone_id = var.CLOUDFLARE_ZONE_ID
+  type    = "TXT"
+  proxied = false
+}
+
+resource "cloudflare_record" "ucall_mailgun_3" {
+  name    = "@"
+  value   = "mxa.mailgun.org"
+  zone_id = var.CLOUDFLARE_ZONE_ID
+  type    = "MX"
+  proxied = false
+}
+
+resource "cloudflare_record" "ucall_mailgun_4" {
+  name    = "@"
+  value   = "mxb.mailgun.org"
+  zone_id = var.CLOUDFLARE_ZONE_ID
+  type    = "MX"
+  proxied = false
+}
+
+resource "cloudflare_record" "ucall_mailgun_5" {
+  name    = "email.ucall.asia"
+  value   = "mailgun.org"
+  zone_id = var.CLOUDFLARE_ZONE_ID
+  type    = "CNAME"
+  proxied = false
+}
