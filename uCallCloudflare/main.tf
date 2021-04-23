@@ -95,3 +95,11 @@ resource "cloudflare_record" "ucall_mailgun_5" {
   type    = "CNAME"
   proxied = false
 }
+
+resource "cloudflare_record" "google_domain" {
+  name    = "@"
+  value   = "google-site-verification=bJwCHH_2s8trKq1_VxvIeFRyUmixVWmVDYYRIZd71wk"
+  zone_id = var.CLOUDFLARE_ZONE_ID
+  type    = "TXT"
+  proxied = false
+}
