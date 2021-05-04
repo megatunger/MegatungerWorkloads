@@ -103,3 +103,11 @@ resource "cloudflare_record" "google_domain" {
   type    = "TXT"
   proxied = false
 }
+
+resource "cloudflare_record" "github_domain" {
+  name    = "_github-challenge-ucall-asia.ucall.asia"
+  value   = "a61e4fa02b"
+  zone_id = var.CLOUDFLARE_ZONE_ID
+  type    = "TXT"
+  proxied = false
+}
