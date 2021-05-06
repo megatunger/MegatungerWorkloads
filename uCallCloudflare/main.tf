@@ -106,7 +106,7 @@ resource "cloudflare_record" "google_domain" {
 
 resource "cloudflare_record" "github_domain" {
   name    = "_github-challenge-ucall-asia.ucall.asia"
-  value   = "a61e4fa02b"
+  value   = "b2aad0f4a7"
   zone_id = var.CLOUDFLARE_ZONE_ID
   type    = "TXT"
   proxied = false
