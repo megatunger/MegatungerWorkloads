@@ -111,3 +111,11 @@ resource "cloudflare_record" "github_domain" {
   type    = "TXT"
   proxied = false
 }
+
+resource "cloudflare_record" "github_domain" {
+  name    = "_edccdbd2ca761c0eb1f291cefad37793.ucall.asia"
+  value   = "_7acfae1866354685adbce111b8f6bb9e.zzxlnyslwt.acm-validations.aws"
+  zone_id = var.CLOUDFLARE_ZONE_ID
+  type    = "CNAME"
+  proxied = false
+}
