@@ -15,6 +15,11 @@ terraform {
   }
 }
 
+provider "cloudflare" {
+  email   = var.CLOUDFLARE_ACCOUNT_EMAIL
+  api_key = var.CLOUDFLARE_API_KEY
+}
+
 resource "cloudflare_record" "ucall_landing_page_etron_research" {
   name    = "ucall"
   value   = "d18tcjznqkfbpt.cloudfront.net"
