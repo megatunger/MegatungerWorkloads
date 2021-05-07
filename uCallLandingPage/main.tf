@@ -24,7 +24,7 @@ resource "cloudflare_record" "ucall_landing_page_etron_research" {
   name    = "ucall"
   value   = "d18tcjznqkfbpt.cloudfront.net"
   zone_id = var.CLOUDFLARE_ETRONRESEARCH_WORK_ZONE_ID
-  type    = "A"
+  type    = "ANAME"
   proxied = true
 }
 
